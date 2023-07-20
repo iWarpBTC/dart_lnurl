@@ -50,4 +50,11 @@ void main() {
     final res = await getParams(url);
     expect(res.payParams, isNotNull);
   });
+
+  test('should handle lnurlw://', () async {
+    final url =
+        'lnurlw://lnbits.btcslovnik.cz/boltcards/api/v1/scan/wpyeilzhasqu8rgsmfqbv9?p=D13EFAAEC499E07F611B279BA3EE982C&c=DF6C74D375DF8300';
+    final res = await getParams(url);
+    expect(res.error?.reason, 'This link is already used.');
+  });
 }
